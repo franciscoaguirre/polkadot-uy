@@ -1,25 +1,160 @@
 ---
-import '../styles/global.css';
-// Component Imports
-import Button from '../components/Button.astro';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
-	</head>
+<BaseLayout
+	title="Polkadot Uruguay"
+	description="Comunidad Polkadot en Uruguay. Construyendo el futuro de Web3."
+	lang="es"
+>
+	<!-- Hero Section -->
+	<section class="relative bg-white dark:bg-black py-32 md:py-48 overflow-hidden hero-noise">
+		<div class="relative max-w-4xl mx-auto px-6 text-center">
+			<h1 class="font-serif text-6xl md:text-7xl lg:text-8xl text-grey-900 dark:text-grey-50 mb-6 text-balance">
+				Polkadot Uruguay
+			</h1>
 
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
+			<p class="text-xl md:text-2xl text-grey-600 dark:text-grey-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+				Construyendo la comunidad de Polkadot en Uruguay
+			</p>
 		</div>
-	</body>
-</html>
+	</section>
+
+	<!-- About Section -->
+	<section class="bg-grey-50 dark:bg-grey-900 border-t border-grey-200 dark:border-grey-800 py-20 md:py-32">
+		<div class="max-w-3xl mx-auto px-6">
+			<h2 class="font-serif text-4xl md:text-5xl text-grey-900 dark:text-grey-50 mb-8 text-center">
+				¿Qué es Polkadot?
+			</h2>
+			<div class="prose prose-lg dark:prose-invert mx-auto">
+				<p class="text-xl text-grey-600 dark:text-grey-400 leading-relaxed text-center mb-12">
+					Una plataforma para crear aplicaciones que devuelven el control a las personas. Productos hechos para gente, no para empresas.
+				</p>
+
+				<div class="grid md:grid-cols-3 gap-6 not-prose">
+					<div class="text-center">
+						<div class="w-12 h-12 bg-grey-100 dark:bg-grey-800 rounded-lg flex items-center justify-center mx-auto mb-4">
+							<svg class="w-6 h-6 text-grey-600 dark:text-grey-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+							</svg>
+						</div>
+						<h3 class="font-serif text-lg text-grey-900 dark:text-grey-50 mb-2">
+							Para personas
+						</h3>
+						<p class="text-sm text-grey-600 dark:text-grey-400">
+							Aplicaciones diseñadas pensando en vos
+						</p>
+					</div>
+
+					<div class="text-center">
+						<div class="w-12 h-12 bg-grey-100 dark:bg-grey-800 rounded-lg flex items-center justify-center mx-auto mb-4">
+							<svg class="w-6 h-6 text-grey-600 dark:text-grey-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+							</svg>
+						</div>
+						<h3 class="font-serif text-lg text-grey-900 dark:text-grey-50 mb-2">
+							Tu control
+						</h3>
+						<p class="text-sm text-grey-600 dark:text-grey-400">
+							Autonomía sobre tu información y activos
+						</p>
+					</div>
+
+					<div class="text-center">
+						<div class="w-12 h-12 bg-grey-100 dark:bg-grey-800 rounded-lg flex items-center justify-center mx-auto mb-4">
+							<svg class="w-6 h-6 text-grey-600 dark:text-grey-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+							</svg>
+						</div>
+						<h3 class="font-serif text-lg text-grey-900 dark:text-grey-50 mb-2">
+							Abierto
+						</h3>
+						<p class="text-sm text-grey-600 dark:text-grey-400">
+							Plataforma libre y transparente
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Community Section -->
+	<section class="bg-white dark:bg-black border-t border-grey-200 dark:border-grey-800 py-20 md:py-32">
+		<div class="max-w-3xl mx-auto px-6 text-center">
+			<h2 class="font-serif text-4xl md:text-5xl text-grey-900 dark:text-grey-50 mb-6">
+				Sumate a la Comunidad
+			</h2>
+			<p class="text-xl text-grey-600 dark:text-grey-400 leading-relaxed">
+				Estamos construyendo la comunidad de Polkadot en Uruguay.
+			</p>
+			<p class="text-xl text-grey-600 dark:text-grey-400 mb-12 leading-relaxed">
+				Próximamente: eventos, contenido educativo y más.
+			</p>
+
+			<!-- Social Links -->
+			<div class="flex flex-wrap justify-center gap-4 mb-12">
+				<a
+					href="https://x.com/polkadotuy"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-flex items-center gap-2 px-6 py-3 bg-grey-900 dark:bg-grey-100 text-white dark:text-grey-900 rounded-xl font-medium hover:bg-grey-800 dark:hover:bg-grey-200 transition-colors"
+				>
+					<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+					</svg>
+					Seguir en X
+				</a>
+			</div>
+
+			<p class="text-sm text-grey-500 dark:text-grey-500">
+				Mantenete atento a las actualizaciones
+			</p>
+		</div>
+	</section>
+
+	<!-- Links Section -->
+	<section class="bg-grey-50 dark:bg-grey-900 border-t border-grey-200 dark:border-grey-800 py-20">
+		<div class="max-w-3xl mx-auto px-6">
+			<h2 class="font-serif text-3xl text-grey-900 dark:text-grey-50 mb-8 text-center">
+				Aprendé más sobre Polkadot
+			</h2>
+			<div class="grid md:grid-cols-3 gap-4">
+				<a
+					href="https://polkadot.com"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex items-center justify-between p-4 bg-white dark:bg-black border border-grey-200 dark:border-grey-800 rounded-xl hover:border-grey-400 dark:hover:border-grey-600 transition-colors group"
+				>
+					<span class="font-medium text-grey-900 dark:text-grey-50">Polkadot.com</span>
+					<svg class="w-5 h-5 text-grey-400 group-hover:text-grey-600 dark:group-hover:text-grey-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+					</svg>
+				</a>
+
+				<a
+					href="https://docs.polkadot.com"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex items-center justify-between p-4 bg-white dark:bg-black border border-grey-200 dark:border-grey-800 rounded-xl hover:border-grey-400 dark:hover:border-grey-600 transition-colors group"
+				>
+					<span class="font-medium text-grey-900 dark:text-grey-50">Docs</span>
+					<svg class="w-5 h-5 text-grey-400 group-hover:text-grey-600 dark:group-hover:text-grey-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+					</svg>
+				</a>
+
+				<a
+					href="https://wiki.polkadot.com"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex items-center justify-between p-4 bg-white dark:bg-black border border-grey-200 dark:border-grey-800 rounded-xl hover:border-grey-400 dark:hover:border-grey-600 transition-colors group"
+				>
+					<span class="font-medium text-grey-900 dark:text-grey-50">Wiki</span>
+					<svg class="w-5 h-5 text-grey-400 group-hover:text-grey-600 dark:group-hover:text-grey-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+					</svg>
+				</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

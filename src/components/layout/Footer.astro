@@ -1,0 +1,52 @@
+---
+interface Props {
+	lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-grey-50 dark:bg-black border-t border-grey-200 dark:border-grey-800">
+	<!-- Main Footer Content -->
+	<div class="max-w-6xl mx-auto px-6 py-12">
+		<div class="flex flex-col items-center text-center gap-8">
+			<!-- Brand -->
+			<div>
+				<div class="flex items-center gap-3 mb-4 justify-center">
+					<span class="font-serif text-xl text-grey-900 dark:text-grey-50">
+						Polkadot Uruguay
+					</span>
+				</div>
+				<p class="text-grey-600 dark:text-grey-400 leading-relaxed max-w-md">
+					Comunidad Polkadot en Uruguay.
+				</p>
+				<p class="text-grey-600 dark:text-grey-400 leading-relaxed max-w-md">
+					Construyendo el futuro de Web3.
+				</p>
+			</div>
+
+			<!-- Social Links -->
+			<div class="flex items-center gap-4">
+				<a
+					href="https://x.com/polkadotuy"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-grey-500 hover:text-grey-700 dark:text-grey-500 dark:hover:text-grey-300 transition-colors"
+					aria-label="X"
+				>
+					<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+						<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+					</svg>
+				</a>
+			</div>
+
+			<!-- Copyright -->
+			<div class="border-t border-grey-200 dark:border-grey-800 pt-8 w-full">
+				<p class="text-sm text-grey-500 dark:text-grey-500">
+					© {currentYear} Polkadot Uruguay
+				</p>
+			</div>
+		</div>
+	</div>
+</footer>

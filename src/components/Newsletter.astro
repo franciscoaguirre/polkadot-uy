@@ -1,0 +1,136 @@
+---
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+	lang: 'es' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="newsletter-section">
+	<div class="text-center mb-8">
+		<h2 class="font-serif text-3xl md:text-4xl text-grey-900 dark:text-grey-50 mb-3">
+			{t('newsletter.title')}
+		</h2>
+		<p class="text-grey-600 dark:text-grey-400 text-lg max-w-2xl mx-auto">
+			{t('newsletter.description')}
+		</p>
+	</div>
+
+	<form id="newsletter-form" class="max-w-md mx-auto">
+		<div class="flex flex-col sm:flex-row gap-3">
+			<input
+				type="email"
+				name="email"
+				id="newsletter-email"
+				placeholder={t('newsletter.placeholder')}
+				required
+				class="flex-1 px-4 py-3 rounded-xl border border-grey-200 dark:border-grey-800 bg-white dark:bg-grey-900 text-grey-900 dark:text-grey-100 focus:border-accent focus:ring-2 focus:ring-accent/20 dark:focus:ring-accent/20 outline-none transition placeholder:text-grey-400 dark:placeholder:text-grey-500"
+			/>
+			<button
+				type="submit"
+				id="newsletter-submit"
+				class="px-8 py-3 bg-grey-900 dark:bg-grey-100 text-white dark:text-grey-900 rounded-xl font-medium hover:bg-grey-800 dark:hover:bg-grey-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 dark:focus:ring-offset-grey-950 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed inline-flex items-center justify-center gap-2"
+			>
+				<span id="newsletter-button-text">{t('newsletter.button')}</span>
+				<svg
+					id="newsletter-spinner"
+					class="hidden animate-spin h-5 w-5"
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+				>
+					<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"
+					></circle>
+					<path
+						class="opacity-75"
+						fill="currentColor"
+						d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+					></path>
+				</svg>
+			</button>
+		</div>
+
+		<!-- Message container -->
+		<div
+			id="newsletter-message"
+			class="hidden mt-4 p-4 rounded-lg"
+			role="alert"
+			aria-live="polite"
+		>
+		</div>
+	</form>
+</div>
+
+<script define:vars={{ lang, translations: { success: Astro.locals.t?.('newsletter.success'), error: Astro.locals.t?.('newsletter.error'), alreadySubscribed: Astro.locals.t?.('newsletter.alreadySubscribed'), invalidEmail: Astro.locals.t?.('newsletter.invalidEmail') } }}>
+	const form = document.getElementById('newsletter-form');
+	const emailInput = document.getElementById('newsletter-email');
+	const submitButton = document.getElementById('newsletter-submit');
+	const buttonText = document.getElementById('newsletter-button-text');
+	const spinner = document.getElementById('newsletter-spinner');
+	const messageDiv = document.getElementById('newsletter-message');
+
+	form?.addEventListener('submit', async (e) => {
+		e.preventDefault();
+
+		const email = emailInput.value;
+
+		// Basic email validation
+		if (!email || !email.includes('@')) {
+			showMessage('error', 'Please enter a valid email');
+			return;
+		}
+
+		// Disable button and show loading state
+		submitButton.disabled = true;
+		buttonText.classList.add('hidden');
+		spinner.classList.remove('hidden');
+
+		try {
+			const response = await fetch('/api/newsletter', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ email, lang }),
+			});
+
+			const data = await response.json();
+
+			if (response.ok) {
+				showMessage('success', data.message);
+				emailInput.value = '';
+			} else {
+				showMessage('error', data.message);
+			}
+		} catch (error) {
+			console.error('Newsletter subscription error:', error);
+			showMessage('error', lang === 'es' ? 'Error al suscribirse. Intenta nuevamente.' : 'Error subscribing. Please try again.');
+		} finally {
+			// Re-enable button and hide loading state
+			submitButton.disabled = false;
+			buttonText.classList.remove('hidden');
+			spinner.classList.add('hidden');
+		}
+	});
+
+	function showMessage(type, message) {
+		messageDiv.classList.remove('hidden');
+		messageDiv.textContent = message;
+
+		if (type === 'success') {
+			messageDiv.className =
+				'mt-4 p-4 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800';
+		} else {
+			messageDiv.className =
+				'mt-4 p-4 rounded-lg bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800';
+		}
+
+		// Auto-hide after 5 seconds
+		setTimeout(() => {
+			messageDiv.classList.add('hidden');
+		}, 5000);
+	}
+</script>
