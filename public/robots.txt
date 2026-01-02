@@ -1,0 +1,12 @@
+# robots.txt for https://polkadot.uy
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://polkadot.uy/sitemap-index.xml
+
+# Crawl-delay (optional, can help with server load)
+# User-agent: *
+# Crawl-delay: 1

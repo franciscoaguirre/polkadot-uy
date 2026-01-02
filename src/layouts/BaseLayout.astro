@@ -12,7 +12,7 @@ interface Props {
 
 const { title, description, image = '/og-default.jpg', lang = 'es' } = Astro.props;
 
-const site = Astro.site || new URL('https://polkadot-uruguay.org');
+const site = Astro.site || new URL('https://polkadot.uy');
 const canonicalURL = new URL(Astro.url.pathname, site);
 const socialImage = new URL(image, site);
 ---
@@ -37,6 +37,9 @@ const socialImage = new URL(image, site);
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={socialImage} />
+		<meta property="og:site_name" content="Polkadot Uruguay" />
+		<meta property="og:locale" content={lang === 'es' ? 'es_UY' : 'en_US'} />
+		<meta property="og:locale:alternate" content={lang === 'es' ? 'en_US' : 'es_UY'} />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
@@ -44,6 +47,8 @@ const socialImage = new URL(image, site);
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={socialImage} />
+		<meta property="twitter:site" content="@polkadotuy" />
+		<meta property="twitter:creator" content="@polkadotuy" />
 
 		<!-- Preload fonts for performance -->
 		<link rel="preload" href="/fonts/dm-serif-display.woff2" as="font" type="font/woff2" crossorigin />

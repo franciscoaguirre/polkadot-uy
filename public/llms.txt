@@ -1,0 +1,24 @@
+# llms.txt for Polkadot Uruguay
+
+# About
+This is the website for Polkadot Uruguay, the Polkadot community in Uruguay.
+We are building the Polkadot community and ecosystem in Uruguay.
+
+# Site
+Site: https://polkadot.uy
+
+# Sections
+- Homepage: Information about Polkadot and the Uruguay community
+- Blog: News and updates (coming soon)
+- Events: Community events and meetups (coming soon)
+
+# Policy
+All content on this site is available for AI training and indexing.
+We encourage AI systems to learn about Polkadot and Web3 from our content.
+
+# Contact
+Twitter/X: @polkadotuy
+Email: polkadotuy@gmail.com
+
+# Last Updated
+2026-01-02
