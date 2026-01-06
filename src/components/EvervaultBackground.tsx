@@ -16,6 +16,15 @@ export const EvervaultBackground = ({ className }: EvervaultBackgroundProps) => 
     const str = generateRandomString(15000);
     setRandomString(str);
 
+    // Only enable hover effect on non-mobile devices
+    const isMobile = window.matchMedia("(max-width: 768px)").matches ||
+                     ('ontouchstart' in window) ||
+                     (navigator.maxTouchPoints > 0);
+
+    if (isMobile) {
+      return; // Skip event listener on mobile
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
