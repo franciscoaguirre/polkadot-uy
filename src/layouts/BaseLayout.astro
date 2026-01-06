@@ -10,7 +10,7 @@ interface Props {
 	lang?: 'es' | 'en';
 }
 
-const { title, description, image = '/og-default.jpg', lang = 'es' } = Astro.props;
+const { title, description, image = '/logo-with-gradient.png', lang = 'es' } = Astro.props;
 
 const site = Astro.site || new URL('https://polkadot.uy');
 const canonicalURL = new URL(Astro.url.pathname, site);
