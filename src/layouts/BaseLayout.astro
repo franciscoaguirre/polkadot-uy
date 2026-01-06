@@ -15,6 +15,40 @@ const { title, description, image = '/og-default.jpg', lang = 'es' } = Astro.pro
 const site = Astro.site || new URL('https://polkadot.uy');
 const canonicalURL = new URL(Astro.url.pathname, site);
 const socialImage = new URL(image, site);
+
+// JSON-LD Structured Data
+const organizationSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'Polkadot Uruguay',
+	url: 'https://polkadot.uy',
+	logo: 'https://polkadot.uy/favicon.svg',
+	sameAs: [
+		'https://x.com/polkadotuy',
+		'https://twitter.com/polkadotuy'
+	],
+	contactPoint: {
+		'@type': 'ContactPoint',
+		email: 'polkadotuy@gmail.com',
+		contactType: 'General Inquiries'
+	},
+	description: lang === 'es'
+		? 'Comunidad Polkadot en Uruguay. Construyendo el futuro de Web3.'
+		: 'Polkadot community in Uruguay. Building the future of Web3.'
+};
+
+const websiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: 'Polkadot Uruguay',
+	url: 'https://polkadot.uy',
+	description: description,
+	inLanguage: lang === 'es' ? 'es-UY' : 'en-US',
+	publisher: {
+		'@type': 'Organization',
+		name: 'Polkadot Uruguay'
+	}
+};
 ---
 
 <!doctype html>
@@ -49,6 +83,10 @@ const socialImage = new URL(image, site);
 		<meta property="twitter:image" content={socialImage} />
 		<meta property="twitter:site" content="@polkadotuy" />
 		<meta property="twitter:creator" content="@polkadotuy" />
+
+		<!-- JSON-LD Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 
 		<!-- Preload fonts for performance -->
 		<link rel="preload" href="/fonts/dm-serif-display.woff2" as="font" type="font/woff2" crossorigin />
