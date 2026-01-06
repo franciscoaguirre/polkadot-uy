@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { EvervaultBackground } from '../components/EvervaultBackground';
 ---
 
 <BaseLayout
@@ -8,7 +9,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 	lang="es"
 >
 	<!-- Hero Section -->
-	<section class="relative bg-white dark:bg-black py-32 md:py-48 overflow-hidden hero-noise">
+	<section class="relative bg-white dark:bg-black py-32 md:py-48 overflow-hidden hero-noise group">
+		<EvervaultBackground client:load />
 		<div class="relative max-w-4xl mx-auto px-6 text-center">
 			<h1 class="font-serif text-6xl md:text-7xl lg:text-8xl text-grey-900 dark:text-grey-50 mb-6 text-balance">
 				Polkadot Uruguay
